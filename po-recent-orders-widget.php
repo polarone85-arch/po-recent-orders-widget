@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: PO Recent Orders Dashboard Widget
- * Description: Displays recent WooCommerce orders with custom order numbers in the WordPress dashboard.
+ * Description: Displays recent WooCommerce orders in your WordPress dashboard.
  * Version: 1.0.0
  * Author: PolarOne
  * Text Domain: po-recent-orders-widget
@@ -67,8 +67,7 @@ function po_render_recent_orders_dashboard_widget() {
     foreach ($orders as $order) {
         $order_id   = $order->get_id();
         $edit_url   = $order->get_edit_order_url();
-        $custom_num = $order->get_meta('_unique_order_number');
-        $display_id = !empty($custom_num) ? $custom_num : $order->get_order_number();
+        $display_id = $order->get_order_number();
 
         $date_created = $order->get_date_created();
         $date_formatted = $date_created ? $date_created->date('d/m') : '';
